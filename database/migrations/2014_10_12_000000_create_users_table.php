@@ -18,8 +18,16 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer("use_count")->default(0);
-            $table->text("location");
+            $table->text("location")->nullable();
+            $table->enum('role',['user','guardian','admin']);
             $table->rememberToken();
+            $table->timestamps();
+        });
+        Schema::create('user_relation',function (Blueprint $table)
+        {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('guardian_id');
             $table->timestamps();
         });
     }

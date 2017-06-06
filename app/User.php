@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','location','use_count','role',
     ];
 
     /**
@@ -26,4 +26,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany($this,'user_relation','guardian_id','user_id');
+    }
+    public function guardians()
+    {
+        return $this->belongsToMany($this,'user_relation','user_id','guardian_id');
+    }
+    public function sticks()
+    {
+        return $this->belongsToMany('Stick','user_stick');
+    }
+
 }

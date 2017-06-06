@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        'guardian'=>
+            [
+              'driver'=>'session',
+                'provider'=>'guardians',
+            ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +75,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'guardians'=>
+            [
+                'driver'=>'eloquent',
+                'model'=>\App\Guardian::class,
+            ],
 
         // 'users' => [
         //     'driver' => 'database',

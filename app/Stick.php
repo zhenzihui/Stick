@@ -10,4 +10,8 @@ class Stick extends Model
         [
           'status','location','use_count'
         ];
+    public function users()
+    {
+        return $this->belongsToMany('User','user_stick');
+    }
 }

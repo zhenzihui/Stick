@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('sticks','StickController@manage');
+Route::resource('stick','StickController');
+
+
+Auth::routes();
+
+
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/setrelation','RelationController@setUserRelation');
+Route::post('/setrelation','RelationController@setUserGuardianRelation');

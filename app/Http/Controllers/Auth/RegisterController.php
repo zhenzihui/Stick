@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/setrelation';
 
     /**
      * Create a new controller instance.
@@ -51,6 +51,12 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'role'=>'required',
+        ],[
+            'name'=>'用户名必填',
+            'email'=>'邮箱必填',
+            'password'=>'密码必填，最少6个字符',
+            'role'=>'必须选择一个角色',
         ]);
     }
 
@@ -66,6 +72,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role'=>$data['role'],
         ]);
     }
 }
