@@ -14,13 +14,14 @@
                 <div class="panel panel-heading">智能拐杖行程中
                 </div>
                 <div class="panel panel-content">
-                  <form action="{{url('unlock')}}" method="post">
+                  <form action="{{url('lock')}}" method="post">
                       <div class="form-group">
                             <label for="id">归还使用中的拐杖？</label>
                             <input type="hidden" id="id" name="id" value="{{$stick->id}}" class="form-control" />
+                          <input type="hidden" id="location" value="" name="location"/>
                         </div>
                         <div class="form-group">
-                            <button id="uploadBtn" class="btn btn-warning form-control" onclick="uploadData()">结束行程</button>
+                            <button id="uploadBtn" class="btn btn-warning form-control">结束行程</button>
                         </div></form>
                 </div>
             </div>
@@ -30,7 +31,7 @@
 
 
     <script type="text/javascript">
-       function uploadData() {
+
 
 
         var map, geolocation;
@@ -55,13 +56,13 @@
         function onComplete(data) {
             lat= data.position.getLat();
             lng=data.position.getLng();
-            location=lat+","+lng;
-            document.getElementById('')
+           var location=lat+","+lng;
+            document.getElementById('location').value=location;
         }
         //解析定位错误信息
         function onError(data) {
             document.getElementById('location').value = '展销会位置';
         }
-       }
+
     </script>
     @endsection

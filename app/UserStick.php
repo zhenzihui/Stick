@@ -12,5 +12,8 @@ class UserStick extends Model
         ];
     protected $table='user_stick';
 
-
+public static function lastOne(User $user)
+{
+   return UserStick::where('user_id','=',$user->id)->orderBy('created_at','desc')->first();
+}
 }

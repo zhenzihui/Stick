@@ -24,7 +24,7 @@
                     <div class="panel panel-body"> <div class="form-group">
                         <label class="control-label" for="status">设置拐杖状态
                         </label>
-                        <input class=" ratio-inline" id="status" type="radio" name="status" value="T" />可用
+                        <input class=" ratio-inline" id="status" type="radio" name="status" value="T" checked/>可用
                         <input class=" ratio-inline" id="status" type="radio" name="status" value="F" />不可用
                         <input class=" ratio-inline" id="status" type="radio" name="status" value="C" />检修中
                     </div>

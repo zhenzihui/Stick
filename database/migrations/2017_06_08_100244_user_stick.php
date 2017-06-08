@@ -21,7 +21,7 @@ class UserStick extends Migration
             $table->timestamps();
             $table->timestamp('start_time')->default(\Carbon\Carbon::now());
             $table->timestamp('end_time')->default(\Carbon\Carbon::now());
-
+            $table->string('end_flag')->default('F');
              $table->text('start_location');
             $table->text('end_location');
 

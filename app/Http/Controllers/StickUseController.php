@@ -40,12 +40,30 @@ return redirect(url('lock'));
     }
     public function lock()
     {
-        $user_stick=UserStick::where('id','=',Auth::user()->id)->latest()->get();
+        $user_stick=UserStick::lastOne(Auth::user());
 
         $id=$user_stick->toArray()[0]['stick_id'];
         $stick=Stick::find($id);
 
         return view('stick.inUse',compact('stick'));
+    }
+    public function postLock(Request $request)
+    {
+        $location=$request->get('location');
+        $sid=$request->get('id');
+           $stick= Stick::find($sid);
+           $stick->location=$location;
+           $stick->status='T';
+           $stick->save();
+        $user_stick=UserStick::lastOne(Auth::user());
+        $id=$user_stick->toArray()['id'];
+        $user_stick=UserStick::find($id);
+        $user_stick->end_location=$location;
+        $user_stick->end_time=Carbon::now();
+        $user_stick->updated_at=Carbon::now();
+        $user_stick->save();
+
+
     }
 
 }
