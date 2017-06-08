@@ -13,7 +13,7 @@ private $stickRepository;
     public function __construct()
     {
         $this->stickRepository=new StickRepository();
-       // $this->middleware('');
+        $this->middleware('AdminCheck');
     }
 
     /**
@@ -28,6 +28,10 @@ private $stickRepository;
 
         return ;
     }
+    public function all()
+    {
+        return $this->stickRepository->all();
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +40,8 @@ private $stickRepository;
      */
     public function create()
     {
-        return view('stick.addStick');
+        $sticks=Stick::all();
+        return view('stick.addStick',['sticks'=>$sticks]);
     }
 
     /**
@@ -47,7 +52,8 @@ private $stickRepository;
      */
     public function store(Request $request)
     {
-
+        $this->stickRepository->create($request);
+        return back();
     }
 
     /**

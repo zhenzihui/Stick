@@ -14,4 +14,7 @@ class Stick extends Model
     {
         return $this->belongsToMany('User','user_stick');
     }
+
+
+
 }

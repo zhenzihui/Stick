@@ -20,18 +20,7 @@ class CreateSticksTable extends Migration
             $table->integer('use_count')->default(0);
             $table->timestamps();
         });
-        Schema::create('user_stick',function (Blueprint $table)
-        {
-           $table->increments('id');
-           $table->integer('user_id');
-           $table->integer('stick_id');
-           $table->timestamp('start_time')->nullable();
-           $table->timestamp('end_time')->nullable();
-           $table->text('start_location');
-           $table->text('end_location');
-           $table->string('track');
-           $table->timestamps();
-        });
+
     }
 
     /**

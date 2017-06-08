@@ -63,8 +63,9 @@
                             <label for="role" class="col-md-4 control-label">选择你的角色</label>
 
                             <div class="col-md-6">
-                            <input type="radio" id="role" name="role" class="radio-inline" value="user"/>使用者
-                            <input type="radio" id="role" name="role" class="radio-inline" value="guardian"/>监护人
+                                <input type="radio" id="role" name="role" class="radio-inline" value="user"/>使用者
+                                <input type="radio" id="role" name="role" class="radio-inline" value="guardian"/>监护人
+                                <input type="radio" id="role" name="role" class="radio-inline" value="admin"/>管理员
                             </div>
                         </div>
 

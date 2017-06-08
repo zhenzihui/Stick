@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Stick;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -37,7 +37,10 @@ class User extends Authenticatable
     }
     public function sticks()
     {
-        return $this->belongsToMany('Stick','user_stick');
+        return $this->belongsToMany(Stick::class,'user_stick');
     }
+
+
+
 
 }

@@ -21,9 +21,15 @@ Route::resource('stick','StickController');
 
 Auth::routes();
 
-
+Route::post('getsticks','StickController@all');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/setrelation','RelationController@setUserRelation');
 Route::post('/setrelation','RelationController@setUserGuardianRelation');
+
+
+Route::get('unlock/{id}','StickUseController@unlock');
+Route::post('unlock','StickUseController@postUnlock');
+Route::get('lock','StickUseController@lock');
+Route::post('lock','StickUseController@postLock');
