@@ -18,11 +18,11 @@
                        <form action="{{url('setrelation')}}" method="post">
                                @foreach($users as $usr)
                                 <div class="form-group">
-                                <input id="{{$usr->name}}" class="glyphicon-chevron-left" type="checkbox" name="{{$usr->role}}[]" value="{{$usr->id}}" /><label for="{{$usr->name}}">{{$usr->name}}</label>
+                                <input id="{{$usr->name}}" class="" type="checkbox" name="{{$usr->role}}[]" value="{{$usr->id}}" /><label for="{{$usr->name}}">{{$usr->name}}</label>
                                 </div>
                                @endforeach
                            <div class="form-group">
-                               <input class="btn btn-info" type="submit" value="关联"/>
+                               <input class="btn-submit" type="submit" value="关联"/>
                            </div>
                            {!! csrf_field() !!}
                        </form>

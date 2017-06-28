@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\UserRepository;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $userRepository;
+
     /**
      * Create a new controller instance.
      *
@@ -13,6 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->userRepository=new UserRepository();
         $this->middleware('auth');
     }
 
@@ -23,6 +27,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users=$this->userRepository->getRelations();
+        return view('home',compact('users'));
+    }
+    public function allStick()
+    {
+        return view('all');
+    }
+    public function setInfo(Request $request)
+    {
+        $uri=$request->session()->get("intent");
+       return redirect(url($uri));
     }
 }

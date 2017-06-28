@@ -14,7 +14,7 @@ class StickRepository
 {
     public function index($num_per_page)
     {
-       return Stick::where('id','>',0)->get()->paginate($num_per_page);
+       return Stick::where('id','>',0)->paginate($num_per_page);
     }
     public function all()
     {

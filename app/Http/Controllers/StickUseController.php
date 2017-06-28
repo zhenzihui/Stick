@@ -28,13 +28,15 @@ class StickUseController extends Controller
         $stick->use_count+=1;
         $stick->save();
         Auth::user()->increment('use_count');
-
+        Auth::user()->location=$location;
         Auth::user()->sticks()->attach($sid,['start_location'=>$location,
             'end_location'=>'',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
             'start_time'=>Carbon::now(),
+            'end_flag'=>'F',
         ]);
+
 return redirect(url('lock'));
 
     }
@@ -42,7 +44,7 @@ return redirect(url('lock'));
     {
         $user_stick=UserStick::lastOne(Auth::user());
 
-        $id=$user_stick->toArray()[0]['stick_id'];
+        $id=$user_stick->toArray()['stick_id'];
         $stick=Stick::find($id);
 
         return view('stick.inUse',compact('stick'));
@@ -61,7 +63,13 @@ return redirect(url('lock'));
         $user_stick->end_location=$location;
         $user_stick->end_time=Carbon::now();
         $user_stick->updated_at=Carbon::now();
+        $user_stick->end_flag='T';
         $user_stick->save();
+        $user_stick=UserStick::find($id);
+
+        return view('stick.complete',compact('user_stick'));
+
+
 
 
     }

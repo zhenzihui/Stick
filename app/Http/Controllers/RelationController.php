@@ -30,8 +30,26 @@ class RelationController extends Controller
             {
                 $users=$request->get('user');
                 Auth::user()->users()->sync($users);
+
             }
 
+               return redirect(url('setinfo'));
+
+
+    }
+    public function detachRelation(Request $request)
+    {
+        if(Auth::user()->role=='user')
+        {
+            $guardians=$request->get('guardian');
+            Auth::user()->guardians()->detach($guardians);
+        }else
+        {
+            $users=$request->get('user');
+            Auth::user()->users()->detach($users);
+
+        }
+        return redirect(url('home'));
 
     }
 

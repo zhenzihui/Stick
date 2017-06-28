@@ -75,7 +75,7 @@
             var map = new AMap.Map('map',{
                 resizeEnable: true,
                 zoom: 16,
-                center: [112.982901,28.178487]
+                center: [112.904233,28.209581]
             });
             map.plugin('AMap.Geolocation', function () {
                 geolocation = new AMap.Geolocation({

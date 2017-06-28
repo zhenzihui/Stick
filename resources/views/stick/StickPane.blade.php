@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-2">
             <div class="col-lg-3">
-                <a href="" class="btn btn-primary">管理拐杖</a>
+                <a href="{{url('stick')}}" class="btn btn-primary">管理拐杖</a>
             </div>
 
             <div class="col-lg-3">

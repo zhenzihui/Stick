@@ -6,7 +6,7 @@
  */
 
 require('./bootstrap');
-
+require('./jquery.min');
 window.Vue = require('vue');
 
 /**
@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 
+const defaultLocation=[112.982901,28.178487];
 const app = new Vue({
     el: '#app'
 });

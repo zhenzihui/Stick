@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Redirect;
 class RegisterController extends Controller
 {
     /*
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/setrelation';
+    protected $redirectTo ='/setrelation';
 
     /**
      * Create a new controller instance.

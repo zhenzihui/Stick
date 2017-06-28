@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repository\StickRepository;
 use App\Stick;
+use function Couchbase\basicDecoderV1;
 use Illuminate\Http\Request;
 
 class StickController extends Controller
@@ -13,7 +14,7 @@ private $stickRepository;
     public function __construct()
     {
         $this->stickRepository=new StickRepository();
-        $this->middleware('AdminCheck');
+        $this->middleware('AdminCheck')->except('all');
     }
 
     /**
@@ -25,8 +26,13 @@ private $stickRepository;
     {
         $sticks=$this->stickRepository->index(10);
 
+        return view('stick.stickmanage',compact('sticks'));
 
-        return ;
+    }
+
+    public function manage()
+    {
+        return view('stick.StickPane');
     }
     public function all()
     {
@@ -64,7 +70,7 @@ private $stickRepository;
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -75,7 +81,9 @@ private $stickRepository;
      */
     public function edit($id)
     {
-        //
+        $stick=Stick::find($id);
+
+        return view('stick.updateStick',compact('stick'));
     }
 
     /**
@@ -87,7 +95,13 @@ private $stickRepository;
      */
     public function update(Request $request, $id)
     {
-        //
+        $stick=Stick::find($id);
+        $input=$request->all();
+        if($stick->update($input))
+        {
+            return back();
+        }
+
     }
 
     /**
@@ -98,11 +112,8 @@ private $stickRepository;
      */
     public function destroy($id)
     {
-        //
+        Stick::destroy($id);
+       return back();
     }
 
-    public function manage()
-    {
-        return view('stick.StickPane');
-    }
 }

@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer("use_count")->default(0);
             $table->text("location")->nullable();
             $table->enum('role',['user','guardian','admin']);
+            $table->char('idcard',18)->unique();
             $table->rememberToken();
             $table->timestamps();
         });
