@@ -33,7 +33,7 @@ Route::post('/setrelation','RelationController@setUserGuardianRelation');
 Route::get('setinfo',function()
 {
    return view('auth.detailInfo');
-});
+})->middleware('FirstLoginCheck');
 Route::post('setinfo','HomeController@setInfo');
 Route::post("detachrelation",'RelationController@detachRelation');
 Route::group(['middleware'=>'LoginCheck'],function ()

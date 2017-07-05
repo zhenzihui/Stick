@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repository\UserRepository;
 use Illuminate\Http\Request;
-
+use Auth;
 class HomeController extends Controller
 {
     protected $userRepository;
@@ -36,6 +36,8 @@ class HomeController extends Controller
     }
     public function setInfo(Request $request)
     {
+        Auth::user()->firstlogin='F';
+        Auth::user()->save();
         $uri=$request->session()->get("intent");
        return redirect(url($uri));
     }

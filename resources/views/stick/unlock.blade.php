@@ -59,7 +59,7 @@
     <div class="container" id="launcher">
         <div class="row">
             <div class="media" align="center">
-                <img src="{{url('back.jpg')}}"  height="100%" width="95%" style="margin-top: 85px"/>
+                <img src="{{url('back.jpg')}}"  height="100%" width="95%" style=""/>
             </div>
         </div>
     </div>

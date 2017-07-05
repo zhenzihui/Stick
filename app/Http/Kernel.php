@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminRoleCheck;
+use App\Http\Middleware\FirstLoginCheck;
 use App\Http\Middleware\LoginCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -60,5 +61,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'AdminCheck'=>AdminRoleCheck::class,
         'LoginCheck'=>LoginCheck::class,
+        'FirstLoginCheck'=>FirstLoginCheck::class,
     ];
 }

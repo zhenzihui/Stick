@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->text("location")->nullable();
             $table->enum('role',['user','guardian','admin']);
             $table->char('idcard',18)->unique();
+            $table->enum('firstlogin',['T','F']);
             $table->rememberToken();
             $table->timestamps();
         });

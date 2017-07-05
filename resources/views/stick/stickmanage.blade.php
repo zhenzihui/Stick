@@ -6,7 +6,7 @@
             <div class="panel-body">
                 <div class="form-group">
                     <table class="table">
-                        <caption>管理拐杖</caption>
+                        <caption>管理拐杖</caption><span><a href="{{url("stick/create")}}">添加拐杖</a> </span>
                         <thead>
                         <tr>
                             <th>拐杖编号</th>

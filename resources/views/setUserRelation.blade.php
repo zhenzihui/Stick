@@ -22,13 +22,17 @@
                                 </div>
                                @endforeach
                            <div class="form-group">
-                               <input class="btn-submit" type="submit" value="关联"/>
+                               <input class="btn-submit" id="relation_btn" type="submit" value="关联"/>
                            </div>
                            {!! csrf_field() !!}
                        </form>
 
                         <script>
-
+                            $(document).ready(function () {
+                                $("#relation_btn").click(function () {
+                                    $('#relation_btn').val('请稍后...');
+                                })
+                            })
                         </script>
                     </div>
                 </div>
